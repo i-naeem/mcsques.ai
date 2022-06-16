@@ -6,8 +6,10 @@
 from cli import parser
 
 args = parser.parse_args()
+rfile = args.input
+ofile = args.output
 
-# Step 0: Setup CLI
+# Step 0: Setup CLI [*]
 # Step 1: Extract Keywords
 # Step 2: Summarize Text
 # Step 3: Filter Extracted Keywords from Summarize Text
