@@ -11,8 +11,8 @@ parser.add_argument('inputFile',
                     )
 
 parser.add_argument(
-    'outputFile',
-    default='-',
+    '--output', '-o',
+    default=sys.stdout,
     metavar="Output File",
     type=argparse.FileType('w'),
     help="This file will be used as output")
