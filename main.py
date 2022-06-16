@@ -5,10 +5,6 @@
 # from sentence_splitter import SentenceSplitter
 from cli import parser
 
-args = parser.parse_args()
-rfile = args.input
-ofile = args.output
-
 # Step 0: Setup CLI [*]
 # Step 1: Extract Keywords
 # Step 2: Summarize Text
@@ -17,3 +13,12 @@ ofile = args.output
 # Step 5: Replace Keyword with ____ in Sentence
 # Step 6: Find at least 3 Common Words with Keyword
 # Step 7: Create an Multiple Choice Question
+
+args = parser.parse_args()
+
+rfile = args.input
+ofile = args.output
+
+text = rfile.read()
+
+print(text)
