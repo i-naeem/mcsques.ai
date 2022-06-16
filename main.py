@@ -1,5 +1,7 @@
 #! ./Scripts/python.exe
 
+from utils.keywords_extractor import extract_keywords
+from utils.text_summarizer import summarize_text
 from sentence_splitter import SentenceSplitter
 
 # Step 1: Extract Keywords
