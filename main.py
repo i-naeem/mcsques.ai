@@ -1,8 +1,8 @@
 #! ./Scripts/python.exe
 
 from utils.is_keyword_in_sentence import is_keyword_in_sentence
-from utils.keywords_extractor import extract_keywords
-from utils.text_summarizer import summarize_text
+from services.keywords_extractor import extract_keywords
+from services.text_summarizer import summarize_text
 from sentence_splitter import SentenceSplitter
 from cli import parser
 
@@ -21,14 +21,5 @@ ofile = args.output
 
 text = rfile.read()
 
-keywords = extract_keywords(text)
-summary = summarize_text(text)
-
 splitter = SentenceSplitter(language="en")
 sentences = splitter.split(text)
-
-filtered_keywords = filter(lambda keyword: keyword in summary, keywords)
-
-sentences_with_keywords = filter(
-    lambda sentence: is_keyword_in_sentence(sentence, filtered_keywords),
-    sentences)
