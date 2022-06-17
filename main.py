@@ -2,7 +2,6 @@
 
 from cli import args
 from sentence_splitter import SentenceSplitter
-from services.text_summarizer import summarize_text
 from services.keywords_extractor import extract_keywords
 
 # Step 0: Setup CLI [*]
@@ -16,28 +15,18 @@ text = rfile.read()
 print('Extracting Keywords')
 keywords = extract_keywords(text)
 
-# Step 3: Summarize Text [*]
-print('Summarizing Text')
-summary = summarize_text(text)
-summary = summary.lower()
-
-# Step 4: Filter Extracted Keywords from Summarize Text [*]
-print('Filtering Keywords')
-filtered_keywords = list(filter(lambda k: k in summary, keywords))
-
-
-# Step 5: Split Text into Sentences [*]
+# Step 3: Split Text into Sentences [*]
 splitter = SentenceSplitter(language="en")
 print('Splitting Text to Sentences')
 sentences = splitter.split(text)
 
 
-# Step 6: Filter Sentences by Sentences which have any Extracted Keyword [*]
+# Step 4: Filter Sentences by Sentences which have any Extracted Keyword [*]
 print('Filtering Sentences')
 filtered_sentences = []
 
 for sentence in sentences:
-    for keyword in filtered_keywords:
+    for keyword in keywords:
         if keyword.lower() in sentence.lower():
             filtered_sentences.append({
                 "question": sentence,
@@ -49,6 +38,6 @@ for sentence in sentences:
 for mcqs in filtered_sentences:
     print(mcqs['question'], ' => ', mcqs['correct_option'])
 
-# Step 7: Replace Keyword with ____ in Sentence
-# Step 8: Find at least 3 Common Words with Keyword
-# Step 9: Create an Multiple Choice Question
+# Step 5: Replace Keyword with ____ in Sentence
+# Step 6: Find at least 3 Common Words with Keyword
+# Step 7: Create an Multiple Choice Question
