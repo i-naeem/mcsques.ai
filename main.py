@@ -27,6 +27,8 @@ summary = summarize_text(text)
 splitter = SentenceSplitter(language="en")
 sentences = splitter.split(text)
 
+filtered_keywords = filter(lambda keyword: keyword in summary, keywords)
+
 sentences_with_keywords = filter(
-    lambda sentence: is_keyword_in_sentence(sentence, keywords),
+    lambda sentence: is_keyword_in_sentence(sentence, filtered_keywords),
     sentences)

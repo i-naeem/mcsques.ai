@@ -18,5 +18,4 @@ def summarize_text(text):
     model = Summarizer('bert-large-uncased')
     summary = model(text, min_length=60, max_length=600, ratio=0.4)
 
-
-return summary
+    return summary
