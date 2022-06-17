@@ -16,3 +16,5 @@ parser.add_argument(
     metavar="Output File",
     type=argparse.FileType(mode='w', encoding='UTF-8'),
     help="This file will be used as output")
+
+args = parser.parse_args()
