@@ -19,6 +19,7 @@ keywords = extract_keywords(text)
 # Step 3: Summarize Text [*]
 print('Summarizing Text')
 summary = summarize_text(text)
+summary = summary.lower()
 
 # Step 4: Filter Extracted Keywords from Summarize Text [*]
 print('Filtering Keywords')
@@ -36,8 +37,8 @@ print('Filtering Sentences')
 filtered_sentences = []
 
 for sentence in sentences:
-    for keyword in keywords:
-        if keyword in sentence:
+    for keyword in filtered_keywords:
+        if keyword.lower() in sentence.lower():
             filtered_sentences.append({
                 "question": sentence,
                 "correct_option":  keyword,
