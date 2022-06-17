@@ -1,7 +1,6 @@
 #! ./Scripts/python.exe
 
 from cli import args
-from pprint import pprint
 from sentence_splitter import SentenceSplitter
 from services.text_summarizer import summarize_text
 from services.keywords_extractor import extract_keywords
@@ -43,6 +42,7 @@ for sentence in sentences:
                 "question": sentence,
                 "correct_option":  keyword,
             })
+            break
 
 
 for mcqs in filtered_sentences:
